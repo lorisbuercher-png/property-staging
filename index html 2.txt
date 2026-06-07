@@ -1,0 +1,1398 @@
+<!-- ============================================================
+     PROPERTY STAGING SCHWEIZ – WordPress Custom HTML Block
+     Zum Einfügen: Gutenberg > Benutzerdefiniertes HTML Block
+     ODER per Theme-Editor / Page Builder (Elementor HTML Widget)
+     ============================================================ -->
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap');
+
+  :root {
+    --gold: #B8965A;
+    --gold-light: #D4AF72;
+    --dark: #1A1A18;
+    --mid: #3C3C38;
+    --light: #F5F3EF;
+    --white: #FAFAF8;
+    --border: rgba(184,150,90,0.25);
+  }
+
+  .ps-wrap * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  .ps-wrap {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 400;
+    color: var(--dark);
+    background: var(--white);
+    overflow-x: hidden;
+  }
+
+  /* ── HERO ── */
+  .ps-hero {
+    position: relative;
+    min-height: 92vh;
+    display: flex;
+    align-items: center;
+    background: var(--dark);
+    overflow: hidden;
+  }
+
+  .ps-hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(105deg,
+        rgba(20,19,17,0.88) 0%,
+        rgba(20,19,17,0.72) 45%,
+        rgba(20,19,17,0.38) 100%),
+      url('https://images.unsplash.com/photo-1600210492493-0946911123ea?w=1800&q=90') center 40%/cover no-repeat;
+  }
+
+  .ps-hero-accent {
+    position: absolute;
+    right: -120px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 520px;
+    height: 520px;
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    opacity: 0.4;
+  }
+  .ps-hero-accent::before {
+    content: '';
+    position: absolute;
+    inset: 40px;
+    border: 1px solid var(--border);
+    border-radius: 50%;
+  }
+
+  .ps-hero-inner {
+    position: relative;
+    z-index: 2;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 120px 40px 100px;
+  }
+
+  .ps-label {
+    display: inline-block;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 28px;
+  }
+
+  .ps-hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 400;
+    font-size: clamp(38px, 5.5vw, 64px);
+    line-height: 1.1;
+    color: var(--white);
+    max-width: 700px;
+    margin-bottom: 28px;
+  }
+
+  .ps-hero h1 em {
+    font-style: italic;
+    color: var(--gold-light);
+  }
+
+  .ps-hero-sub {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.7;
+    color: rgba(250,250,248,0.68);
+    max-width: 480px;
+    margin-bottom: 52px;
+  }
+
+  .ps-btn {
+    display: inline-block;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--dark);
+    background: var(--gold);
+    padding: 14px 32px;
+    transition: background 0.3s, color 0.3s;
+  }
+  .ps-btn:hover { background: var(--gold-light); }
+
+  .ps-btn-outline {
+    background: transparent;
+    color: var(--white);
+    border: 1px solid rgba(184,150,90,0.5);
+    margin-left: 16px;
+    transition: border-color 0.3s, color 0.3s;
+  }
+  .ps-btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+
+  .ps-hero-stats {
+    position: absolute;
+    bottom: 52px;
+    right: 40px;
+    display: flex;
+    gap: 52px;
+    z-index: 2;
+  }
+
+  .ps-stat-item { text-align: right; }
+  .ps-stat-num {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 32px;
+    font-weight: 500;
+    color: var(--gold);
+    line-height: 1;
+  }
+  .ps-stat-label {
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(250,250,248,0.5);
+    margin-top: 4px;
+  }
+
+  /* ── INTRO STRIP ── */
+  .ps-strip {
+    background: var(--gold);
+    padding: 22px 40px;
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    flex-wrap: wrap;
+  }
+  .ps-strip span {
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--dark);
+    font-weight: 500;
+  }
+
+  /* ── SECTION BASE ── */
+  .ps-section {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 100px 40px;
+  }
+
+  .ps-section-label {
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 20px;
+    display: block;
+  }
+
+  .ps-h2 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 400;
+    font-size: clamp(28px, 3.5vw, 42px);
+    line-height: 1.1;
+    color: var(--dark);
+    margin-bottom: 20px;
+  }
+
+  .ps-h2 em { font-style: italic; color: var(--gold); }
+
+  .ps-body {
+    font-size: 16px;
+    line-height: 1.8;
+    color: var(--mid);
+    max-width: 560px;
+  }
+
+  /* ── SERVICES ── */
+  .ps-services-bg {
+    background: var(--light);
+  }
+
+  .ps-services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2px;
+    margin-top: 60px;
+  }
+
+  .ps-service-card {
+    background: var(--white);
+    padding: 44px 36px;
+    border-bottom: 3px solid transparent;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    position: relative;
+  }
+  .ps-service-card:hover {
+    border-color: var(--gold);
+    box-shadow: 0 8px 40px rgba(184,150,90,0.12);
+  }
+
+  .ps-service-icon {
+    width: 44px;
+    height: 44px;
+    margin-bottom: 24px;
+    color: var(--gold);
+  }
+
+  .ps-service-card h3 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--dark);
+    margin-bottom: 14px;
+  }
+
+  .ps-service-card p {
+    font-size: 14px;
+    line-height: 1.75;
+    color: var(--mid);
+  }
+
+  .ps-card-num {
+    position: absolute;
+    top: 36px;
+    right: 36px;
+    font-family: 'Playfair Display', serif;
+    font-size: 13px;
+    color: rgba(184,150,90,0.4);
+    letter-spacing: 0.1em;
+  }
+
+  /* ── BEFORE / AFTER ── */
+  .ps-ba-bg {
+    background: var(--dark);
+    padding: 110px 0 120px;
+    overflow: hidden;
+  }
+  .ps-ba-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 40px;
+  }
+  .ps-ba-intro {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: end;
+    margin-bottom: 72px;
+  }
+  @media (max-width: 768px) {
+    .ps-ba-intro { grid-template-columns: 1fr; gap: 24px; }
+  }
+  .ps-ba-intro .ps-h2 { color: var(--white); }
+  .ps-ba-intro .ps-body { color: rgba(250,250,248,0.6); }
+
+  .ps-result-bar {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-top: 8px;
+  }
+  .ps-result-item {
+    text-align: center;
+    background: rgba(184,150,90,0.1);
+    border: 1px solid var(--border);
+    padding: 20px 22px;
+    flex: 1;
+    min-width: 100px;
+  }
+  .ps-result-val {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--gold);
+    line-height: 1;
+  }
+  .ps-result-lbl {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(250,250,248,0.45);
+    margin-top: 6px;
+  }
+
+  .ps-cases { display: flex; flex-direction: column; gap: 80px; }
+
+  .ps-case {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 52px;
+    align-items: start;
+  }
+  .ps-case.ps-case-rev { grid-template-columns: 1fr 1.1fr; }
+  @media (max-width: 768px) {
+    .ps-case, .ps-case.ps-case-rev { grid-template-columns: 1fr; }
+  }
+
+  .ps-slider-wrap {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(184,150,90,0.2);
+    cursor: col-resize;
+    user-select: none;
+  }
+  .ps-slider-wrap img {
+    display: block;
+    width: 100%;
+    height: 380px;
+    object-fit: cover;
+  }
+  .ps-slider-after {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    width: 50%;
+  }
+  .ps-slider-after img {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    max-width: none;
+    height: 380px;
+    object-fit: cover;
+  }
+  .ps-slider-handle {
+    position: absolute;
+    top: 0; bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 3px;
+    background: var(--gold);
+    cursor: col-resize;
+    z-index: 10;
+  }
+  .ps-slider-handle::before {
+    content: '◀ ▶';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--gold);
+    color: var(--dark);
+    font-size: 11px;
+    font-weight: 700;
+    padding: 8px 12px;
+    white-space: nowrap;
+    pointer-events: none;
+  }
+  .ps-slider-label-before,
+  .ps-slider-label-after {
+    position: absolute;
+    bottom: 14px;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 5px 12px;
+    font-family: 'DM Sans', sans-serif;
+    z-index: 5;
+  }
+  .ps-slider-label-before {
+    left: 14px;
+    background: rgba(26,26,24,0.75);
+    color: rgba(250,250,248,0.7);
+  }
+  .ps-slider-label-after {
+    right: 14px;
+    background: var(--gold);
+    color: var(--dark);
+    z-index: 12;
+  }
+
+  .ps-case-info { padding-top: 8px; }
+  .ps-case-tag {
+    display: inline-block;
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    border: 1px solid var(--border);
+    padding: 4px 14px;
+    margin-bottom: 18px;
+  }
+  .ps-case-info h3 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--white);
+    line-height: 1.2;
+    margin-bottom: 12px;
+  }
+  .ps-case-info p {
+    font-size: 14px;
+    line-height: 1.8;
+    color: rgba(250,250,248,0.58);
+    margin-bottom: 24px;
+  }
+
+  .ps-massnahmen {
+    margin-bottom: 24px;
+    border-top: 1px solid rgba(184,150,90,0.15);
+  }
+  .ps-massnahme-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(184,150,90,0.1);
+    gap: 16px;
+  }
+  .ps-massnahme-name {
+    font-size: 13px;
+    color: rgba(250,250,248,0.65);
+    flex: 1;
+  }
+  .ps-massnahme-price {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--gold-light);
+    white-space: nowrap;
+  }
+  .ps-massnahmen-total {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 0 0;
+    font-size: 13px;
+    color: rgba(250,250,248,0.45);
+  }
+  .ps-massnahmen-total strong {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    color: var(--gold);
+    font-weight: 600;
+  }
+
+  .ps-case-result {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .ps-case-kpi {
+    flex: 1;
+    min-width: 100px;
+    background: rgba(184,150,90,0.08);
+    border: 1px solid rgba(184,150,90,0.2);
+    padding: 14px 16px;
+  }
+  .ps-case-kpi-val {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 20px;
+    color: var(--gold);
+    font-weight: 600;
+    line-height: 1;
+  }
+  .ps-case-kpi-lbl {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: rgba(250,250,248,0.4);
+    margin-top: 5px;
+  }
+
+  .ps-ba-divider {
+    border: none;
+    border-top: 1px solid rgba(184,150,90,0.15);
+    margin: 0;
+  }
+
+  /* ── PROCESS ── */
+  .ps-process-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+    margin-top: 60px;
+  }
+
+  @media (max-width: 768px) {
+    .ps-process-grid { grid-template-columns: 1fr; gap: 40px; }
+    .ps-hero-stats { display: none; }
+  }
+
+  .ps-process-img {
+    position: relative;
+  }
+  .ps-process-img img {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+    display: block;
+  }
+  .ps-process-img::after {
+    content: '';
+    position: absolute;
+    bottom: -20px;
+    right: -20px;
+    width: 60%;
+    height: 60%;
+    border: 1px solid var(--border);
+    z-index: -1;
+  }
+
+  .ps-steps { margin-top: 32px; }
+  .ps-step {
+    display: flex;
+    gap: 24px;
+    padding: 24px 0;
+    border-bottom: 1px solid rgba(60,60,56,0.1);
+  }
+  .ps-step:last-child { border-bottom: none; }
+
+  .ps-step-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    font-weight: 300;
+    color: var(--gold);
+    line-height: 1;
+    min-width: 40px;
+  }
+  .ps-step-content h4 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--dark);
+    margin-bottom: 6px;
+  }
+  .ps-step-content p {
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--mid);
+  }
+
+  /* ── PROJECTS GRID ── */
+  .ps-projects-bg {
+    background: var(--dark);
+    padding: 100px 0;
+  }
+  .ps-projects-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 40px;
+  }
+  .ps-projects-inner .ps-h2 { color: var(--white); }
+
+  .ps-projects-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3px;
+    margin-top: 52px;
+  }
+  @media (max-width: 768px) {
+    .ps-projects-grid { grid-template-columns: 1fr; }
+  }
+
+  .ps-project-card {
+    position: relative;
+    overflow: hidden;
+    height: 340px;
+  }
+  .ps-project-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+    display: block;
+  }
+  .ps-project-card:hover img { transform: scale(1.06); }
+
+  .ps-project-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(26,26,24,0.88) 0%, transparent 60%);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 28px;
+  }
+  .ps-project-type {
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 6px;
+  }
+  .ps-project-name {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--white);
+  }
+  .ps-project-loc {
+    font-size: 12px;
+    color: rgba(250,250,248,0.55);
+    margin-top: 4px;
+  }
+
+  /* ── TESTIMONIAL ── */
+  .ps-testimonial-bg {
+    background: var(--light);
+    padding: 100px 40px;
+  }
+  .ps-testimonial-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+  @media (max-width: 768px) {
+    .ps-testimonial-inner { grid-template-columns: 1fr; gap: 40px; }
+  }
+
+  .ps-rating-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 32px;
+  }
+  .ps-rating-num {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 44px;
+    font-weight: 500;
+    color: var(--gold);
+    line-height: 1;
+  }
+  .ps-stars { color: var(--gold); font-size: 18px; letter-spacing: 2px; }
+  .ps-reviews { font-size: 13px; color: var(--mid); }
+
+  .ps-quote {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 17px;
+    font-weight: 400;
+    font-style: italic;
+    line-height: 1.6;
+    color: var(--dark);
+    margin-bottom: 28px;
+    border-left: 2px solid var(--gold);
+    padding-left: 24px;
+  }
+
+  .ps-reviewer {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .ps-reviewer-avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    color: var(--white);
+    font-weight: 400;
+  }
+  .ps-reviewer-name {
+    font-weight: 500;
+    font-size: 14px;
+    color: var(--dark);
+  }
+  .ps-reviewer-role {
+    font-size: 12px;
+    color: var(--mid);
+    letter-spacing: 0.05em;
+  }
+
+  .ps-testimonial-img img {
+    width: 100%;
+    height: 420px;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* ── PARTNER LOGOS ── */
+  .ps-partners {
+    padding: 48px 40px;
+    border-top: 1px solid rgba(60,60,56,0.1);
+    border-bottom: 1px solid rgba(60,60,56,0.1);
+  }
+  .ps-partners-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 24px;
+  }
+  .ps-partner-label {
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: rgba(60,60,56,0.45);
+    min-width: 120px;
+  }
+  .ps-partner-logos {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .ps-partner-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 15px;
+    font-weight: 400;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(60,60,56,0.35);
+    transition: color 0.3s;
+  }
+  .ps-partner-logo:hover { color: var(--gold); }
+
+  /* ── CTA ── */
+  .ps-cta-bg {
+    background: var(--dark);
+    position: relative;
+    overflow: hidden;
+  }
+  .ps-cta-accent {
+    position: absolute;
+    left: -200px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 600px;
+    height: 600px;
+    border: 1px solid rgba(184,150,90,0.12);
+    border-radius: 50%;
+  }
+  .ps-cta-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 120px 40px;
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 80px;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+  }
+  @media (max-width: 768px) {
+    .ps-cta-inner { grid-template-columns: 1fr; gap: 40px; }
+  }
+  .ps-cta-inner .ps-h2 { color: var(--white); margin-bottom: 16px; }
+  .ps-cta-inner .ps-body { color: rgba(250,250,248,0.62); }
+
+  .ps-contact-form { display: flex; flex-direction: column; gap: 16px; }
+  .ps-form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  @media (max-width: 480px) { .ps-form-row { grid-template-columns: 1fr; } }
+
+  .ps-input {
+    width: 100%;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(184,150,90,0.2);
+    padding: 14px 18px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    color: var(--white);
+    outline: none;
+    transition: border-color 0.3s;
+  }
+  .ps-input::placeholder { color: rgba(250,250,248,0.35); }
+  .ps-input:focus { border-color: var(--gold); }
+
+  /* ── FOOTER ── */
+  .ps-footer {
+    background: #131311;
+    padding: 52px 40px 36px;
+  }
+  .ps-footer-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 24px;
+    padding-bottom: 28px;
+    border-bottom: 1px solid rgba(184,150,90,0.15);
+    margin-bottom: 28px;
+  }
+  .ps-footer-brand {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--white);
+    letter-spacing: 0.1em;
+  }
+  .ps-footer-brand span { color: var(--gold); }
+
+  .ps-footer-links {
+    display: flex;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+  .ps-footer-links a {
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(250,250,248,0.45);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  .ps-footer-links a:hover { color: var(--gold); }
+
+  .ps-footer-copy {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .ps-footer-copy p {
+    font-size: 12px;
+    color: rgba(250,250,248,0.25);
+  }
+</style>
+
+<div class="ps-wrap">
+
+  <!-- ═══════════ HERO ═══════════ -->
+  <section class="ps-hero">
+    <div class="ps-hero-bg"></div>
+    <div class="ps-hero-accent"></div>
+    <div class="ps-hero-inner">
+      <span class="ps-label">Property Staging · Schweiz</span>
+      <h1>Wir verwandeln<br><em>Immobilien</em><br>in Werte.</h1>
+      <p class="ps-hero-sub">
+        Von der Rasenpflege bis zur Vollrenovation – wir bereiten Ihre Liegenschaft professionell für den Verkauf oder die Vermietung vor. Diskret, zuverlässig und schweizweit.
+      </p>
+      <a href="#kontakt" class="ps-btn">Kostenloses Angebot</a>
+      <a href="#leistungen" class="ps-btn ps-btn-outline">Leistungen entdecken</a>
+    </div>
+    <div class="ps-hero-stats">
+      <div class="ps-stat-item">
+        <div class="ps-stat-num">150+</div>
+        <div class="ps-stat-label">Objekte aufgewertet</div>
+      </div>
+      <div class="ps-stat-item">
+        <div class="ps-stat-num">12%</div>
+        <div class="ps-stat-label">Ø Wertsteigerung</div>
+      </div>
+      <div class="ps-stat-item">
+        <div class="ps-stat-num">8</div>
+        <div class="ps-stat-label">Kantone</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ STRIP ═══════════ -->
+  <div class="ps-strip">
+    <span>Zürich &amp; Umgebung</span>
+    <span>Zug · Bern · Basel</span>
+    <span>Schnelle Umsetzung</span>
+    <span>Fixpreis-Angebote</span>
+    <span>Partnerschaft mit Maklern</span>
+  </div>
+
+  <!-- ═══════════ LEISTUNGEN ═══════════ -->
+  <div class="ps-services-bg" id="leistungen">
+    <div class="ps-section">
+      <span class="ps-section-label">Was wir bieten</span>
+      <h2 class="ps-h2">Unsere <em>Leistungen</em><br>für Ihre Immobilie</h2>
+      <p class="ps-body">Vom Aussenbereich bis zur Innenausstattung – wir übernehmen alle Massnahmen, die den Verkaufswert Ihrer Liegenschaft gezielt steigern.</p>
+
+      <div class="ps-services-grid">
+
+        <div class="ps-service-card">
+          <span class="ps-card-num">01</span>
+          <svg class="ps-service-icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M6 38c0-8.837 7.163-16 16-16s16 7.163 16 16M22 22V8M14 30l8-8 8 8"/>
+          </svg>
+          <h3>Gartenpflege &amp; Aussenbereich</h3>
+          <p>Rasenmähen, Hecken schneiden, Beete anlegen, Einfahrten reinigen und Aussen&shy;anlagen auffrischen – der erste Eindruck zählt.</p>
+        </div>
+
+        <div class="ps-service-card">
+          <span class="ps-card-num">02</span>
+          <svg class="ps-service-icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.5">
+            <rect x="6" y="14" width="32" height="24" rx="1"/>
+            <path d="M14 14V10a8 8 0 0 1 16 0v4M22 26v4"/>
+          </svg>
+          <h3>Betonkosmetik &amp; Fassade</h3>
+          <p>Risse schliessen, Oberflächen beschichten, Fassaden reinigen und sanieren – für einen gepflegten, modernen Auftritt von aussen.</p>
+        </div>
+
+        <div class="ps-service-card">
+          <span class="ps-card-num">03</span>
+          <svg class="ps-service-icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M8 36V20L22 8l14 12v16M16 36v-10h12v10"/>
+          </svg>
+          <h3>Innenrenovationen</h3>
+          <p>Malerarbeiten, Bodenbeläge, Küchen- und Badezimmer&shy;auffrischungen sowie kleinere Umbauten – alles aus einer Hand.</p>
+        </div>
+
+        <div class="ps-service-card">
+          <span class="ps-card-num">04</span>
+          <svg class="ps-service-icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.5">
+            <circle cx="22" cy="22" r="16"/>
+            <path d="M22 14v8l6 4"/>
+          </svg>
+          <h3>Home Staging &amp; Styling</h3>
+          <p>Möblierung, Dekoration und Lichtkonzepte, die Interessenten ansprechen – professionell inszeniert für Fotos und Besichtigungen.</p>
+        </div>
+
+        <div class="ps-service-card">
+          <span class="ps-card-num">05</span>
+          <svg class="ps-service-icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M22 6l4 10h10l-8 6 3 10-9-6-9 6 3-10-8-6h10z"/>
+          </svg>
+          <h3>Wertermittlung &amp; Beratung</h3>
+          <p>Wir analysieren Ihre Liegenschaft und empfehlen gezielt die Massnahmen mit dem besten Kosten-Nutzen-Verhältnis.</p>
+        </div>
+
+        <div class="ps-service-card">
+          <span class="ps-card-num">06</span>
+          <svg class="ps-service-icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M10 34l6-12 8 6 8-14 2 20M6 40h32"/>
+          </svg>
+          <h3>Koordination &amp; Projektleitung</h3>
+          <p>Sie haben einen Ansprechpartner. Wir koordinieren alle Handwerker, Lieferanten und Termine – termingerecht und stressfrei.</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════ VORHER / NACHHER ═══════════ -->
+  <div class="ps-ba-bg" id="vorher-nachher">
+    <div class="ps-ba-inner">
+
+      <div class="ps-ba-intro">
+        <div>
+          <span class="ps-section-label">Ergebnisse die überzeugen</span>
+          <h2 class="ps-h2">Vorher &amp; Nachher –<br><em>der Unterschied</em> zählt</h2>
+        </div>
+        <div>
+          <p class="ps-body">Sehen Sie selbst, wie gezielte Massnahmen den Marktwert steigern und Liegenschaften schneller verkauft werden.</p>
+          <div class="ps-result-bar">
+            <div class="ps-result-item">
+              <div class="ps-result-val">+14%</div>
+              <div class="ps-result-lbl">Ø Mehrerlös</div>
+            </div>
+            <div class="ps-result-item">
+              <div class="ps-result-val">3×</div>
+              <div class="ps-result-lbl">Schneller verkauft</div>
+            </div>
+            <div class="ps-result-item">
+              <div class="ps-result-val">150+</div>
+              <div class="ps-result-lbl">Projekte</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ps-cases">
+
+        <!-- ── CASE 1: Wohnzimmer ── -->
+        <div class="ps-case">
+          <div>
+            <div class="ps-slider-wrap" data-slider>
+              <img src="https://images.unsplash.com/photo-1600210492493-0946911123ea?w=900&q=80" alt="Nachher – modernes Wohnzimmer" loading="lazy"/>
+              <div class="ps-slider-after">
+                <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=900&q=80" alt="Vorher – ungepflegtes Wohnzimmer" loading="lazy"/>
+              </div>
+              <div class="ps-slider-handle"></div>
+              <span class="ps-slider-label-before">Vorher</span>
+              <span class="ps-slider-label-after">Nachher</span>
+            </div>
+          </div>
+          <div class="ps-case-info">
+            <span class="ps-case-tag">Home Staging &amp; Renovation</span>
+            <h3>4-Zimmer-Wohnung<br>Zürich Wiedikon</h3>
+            <p>Veralteter Bodenbelag, abgenutzte Wände und eine unvorteilhafte Möblierung verhinderten höhere Gebote. Nach gezieltem Staging und frischen Oberflächen wurde die Wohnung innerhalb von 9 Tagen verkauft.</p>
+            <div class="ps-massnahmen">
+              <div class="ps-massnahme-row">
+                <span class="ps-massnahme-name">Malerarbeiten (alle Räume)</span>
+                <span class="ps-massnahme-price">CHF 2'800</span>
+              </div>
+              <div class="ps-massnahme-row">
+                <span class="ps-massnahme-name">Vinyl-Bodenbelag verlegen</span>
+                <span class="ps-massnahme-price">CHF 3'400</span>
+              </div>
+              <div class="ps-massnahme-row">
+                <span class="ps-massnahme-name">Home Staging inkl. Möblierung</span>
+                <span class="ps-massnahme-price">CHF 1'900</span>
+              </div>
+              <div class="ps-massnahme-row">
+                <span class="ps-massnahme-name">Professionelle Fotografie</span>
+                <span class="ps-massnahme-price">CHF 490</span>
+              </div>
+              <div class="ps-massnahmen-total">
+                <span>Gesamtinvestition</span>
+                <strong>CHF 8'590</strong>
+              </div>
+            </div>
+            <div class="ps-case-result">
+              <div class="ps-case-kpi">
+                <div class="ps-case-kpi-val">+CHF 42'000</div>
+                <div class="ps-case-kpi-lbl">Mehrerlös</div>
+              </div>
+              <div class="ps-case-kpi">
+                <div class="ps-case-kpi-val">9 Tage</div>
+                <div class="ps-case-kpi-lbl">Verkaufsdauer</div>
+              </div>
+              <div class="ps-case-kpi">
+                <div class="ps-case-kpi-val">+11%</div>
+                <div class="ps-case-kpi-lbl">Über Listenpreis</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <hr class="ps-ba-divider"/>
+
+        <!-- ── CASE 2: Fassade / Garten ── -->
+        <div class="ps-case ps-case-rev">
+          <div class="ps-case-info">
+            <span class="ps-case-tag">Aussenbereich &amp; Betonkosmetik</span>
+            <h3>Einfamilienhaus<br>Küsnacht ZH</h3>
+            <p>Verwitterte Fassade, überwucherter Garten und rissige Einfahrt – der erste Eindruck schreckte Interessenten ab. Nach der Aufwertung des Aussenbereichs kamen dreimal mehr Besichtigungsanfragen.</p>
+            <div class="ps-massnahmen">
+              <div class="ps-massnahme-row">
+                <span class="ps-massnahme-name">Fassadenreinigung &amp; -anstrich</span>
+                <span class="ps-massnahme-price">CHF 5'200</span>
+              </div>
+              <div class="ps-massnahme-row">
+                <span class="ps-massnahme-name">Betonkosmetik Einfahrt &amp; Terrasse</span>
+                <span class="ps-massnahme-price">CHF 2'900</span>
+              </div>
+              <div class="ps-massnahme-row">
+                <span class="ps-massnahme-name">Gartenpflege, Rasen, Hecken</span>
+                <span class="ps-massnahme-price">CHF 1'600</span>
+              </div>
+              <div class="ps-massnahme-row">
+                <span class="ps-massnahme-name">Aussenbeleuchtung erneuern</span>
+                <span class="ps-massnahme-price">CHF 980</span>
+              </div>
+              <div class="ps-massnahmen-total">
+                <span>Gesamtinvestition</span>
+                <strong>CHF 10'680</strong>
+              </div>
+            </div>
+            <div class="ps-case-result">
+              <div class="ps-case-kpi">
+                <div class="ps-case-kpi-val">+CHF 85'000</div>
+                <div class="ps-case-kpi-lbl">Mehrerlös</div>
+              </div>
+              <div class="ps-case-kpi">
+                <div class="ps-case-kpi-val">14 Tage</div>
+                <div class="ps-case-kpi-lbl">Verkaufsdauer</div>
+              </div>
+              <div class="ps-case-kpi">
+                <div class="ps-case-kpi-val">+16%</div>
+                <div class="ps-case-kpi-lbl">Über Schätzwert</div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="ps-slider-wrap" data-slider>
+              <img src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=900&q=80" alt="Nachher – gepflegtes Haus" loading="lazy"/>
+              <div class="ps-slider-after">
+                <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=900&q=80" alt="Vorher – ungepflegtes Haus" loading="lazy"/>
+              </div>
+              <div class="ps-slider-handle"></div>
+              <span class="ps-slider-label-before">Vorher</span>
+              <span class="ps-slider-label-after">Nachher</span>
+            </div>
+          </div>
+        </div>
+
+        <hr class="ps-ba-divider"/>
+
+        <!-- ── CASE 3: Bad / Küche ── -->
+        <div class="ps-case">
+          <div>
+            <div class="ps-slider-wrap" data-slider>
+              <img src="https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=900&q=80" alt="Nachher – modernes Bad" loading="lazy"/>
+              <div class="ps-slider-after">
+                <img src="https://images.unsplash.com/photo-1484154218962-a197022b5858?w=900&q=80" alt="Vorher – altes Bad" loading="lazy"/>
+              </div>
+              <div class="ps-slider-handle"></div>
+              <span class="ps-slider-label-before">Vorher</span>
+              <span class="ps-slider-label-after">Nachher</span>
+            </div>
+          </div>
+          <div class="ps-case-info">
+            <span class="ps-case-tag">Bad &amp; Küche Auffrischung</span>
+            <h3>3.5-Zimmer-Wohnung<br>Zug Altstadt</h3>
+            <p>Nass- und Küchenbereich aus den 90ern – ein häufiges Verkaufshindernis. Ohne Vollsanierung haben wir durch gezielte Kosmetik und neue Armaturen eine zeitgemässe Wirkung erzielt.</p>
+            <div class="ps-massnahmen">
+              <div class="ps-massnahme-row">
+                <span class="ps-massnahme-name">Bad: neue Armaturen, Spiegel, Licht</span>
+                <span class="ps-massnahme-price">CHF 1'850</span>
+              </div>
+              <div class="ps-massnahme-row">
+                <span class="ps-massnahme-name">Küche: Fronten, Griffe, Arbeitsplatte</span>
+                <span class="ps-massnahme-price">CHF 2'300</span>
+              </div>
+              <div class="ps-massnahme-row">
+                <span class="ps-massnahme-name">Wandfliesen neu verfugen &amp; streichen</span>
+                <span class="ps-massnahme-price">CHF 780</span>
+              </div>
+              <div class="ps-massnahme-row">
+                <span class="ps-massnahme-name">Styling &amp; Dekoration</span>
+                <span class="ps-massnahme-price">CHF 650</span>
+              </div>
+              <div class="ps-massnahmen-total">
+                <span>Gesamtinvestition</span>
+                <strong>CHF 5'580</strong>
+              </div>
+            </div>
+            <div class="ps-case-result">
+              <div class="ps-case-kpi">
+                <div class="ps-case-kpi-val">+CHF 28'000</div>
+                <div class="ps-case-kpi-lbl">Mehrerlös</div>
+              </div>
+              <div class="ps-case-kpi">
+                <div class="ps-case-kpi-val">6 Tage</div>
+                <div class="ps-case-kpi-lbl">Verkaufsdauer</div>
+              </div>
+              <div class="ps-case-kpi">
+                <div class="ps-case-kpi-val">+9%</div>
+                <div class="ps-case-kpi-lbl">Über Listenpreis</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /ps-cases -->
+    </div><!-- /ps-ba-inner -->
+  </div><!-- /ps-ba-bg -->
+
+  <!-- ═══════════ PROZESS ═══════════ -->
+  <div class="ps-section" id="prozess">
+    <div class="ps-process-grid">
+      <div class="ps-process-img">
+        <img
+          src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=900&q=80"
+          alt="Renovation Prozess"
+          loading="lazy"
+        />
+      </div>
+      <div>
+        <span class="ps-section-label">Unser Vorgehen</span>
+        <h2 class="ps-h2">Vom Erstkontakt zur <em>aufgewerteten</em> Liegenschaft</h2>
+        <p class="ps-body">Ein klarer, transparenter Ablauf – damit Sie jederzeit wissen, wo wir stehen.</p>
+        <div class="ps-steps">
+          <div class="ps-step">
+            <div class="ps-step-num">01</div>
+            <div class="ps-step-content">
+              <h4>Kostenlose Besichtigung</h4>
+              <p>Wir kommen zu Ihnen und begutachten die Liegenschaft vor Ort. Kein Aufwand Ihrerseits – wir erledigen die Analyse.</p>
+            </div>
+          </div>
+          <div class="ps-step">
+            <div class="ps-step-num">02</div>
+            <div class="ps-step-content">
+              <h4>Massnahmenplan &amp; Offerte</h4>
+              <p>Innerhalb von 48 Stunden erhalten Sie ein detailliertes Angebot mit Fixpreisen – transparent, ohne versteckte Kosten.</p>
+            </div>
+          </div>
+          <div class="ps-step">
+            <div class="ps-step-num">03</div>
+            <div class="ps-step-content">
+              <h4>Umsetzung durch unser Team</h4>
+              <p>Unsere erfahrenen Fachkräfte führen alle Arbeiten termingerecht und sauber durch – Sie müssen nicht vor Ort sein.</p>
+            </div>
+          </div>
+          <div class="ps-step">
+            <div class="ps-step-num">04</div>
+            <div class="ps-step-content">
+              <h4>Abnahme &amp; Übergabe</h4>
+              <p>Gemeinsame Abnahme, professionelle Fotos und eine aufgewertete Immobilie – bereit für den Markt.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════ PROJEKTE ═══════════ -->
+  <div class="ps-projects-bg" id="projekte">
+    <div class="ps-projects-inner">
+      <span class="ps-section-label">Referenzen</span>
+      <h2 class="ps-h2">Ausgewählte <em>Projekte</em></h2>
+      <div class="ps-projects-grid">
+
+        <div class="ps-project-card">
+          <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=700&q=80" alt="Penthouse Zürich" loading="lazy"/>
+          <div class="ps-project-overlay">
+            <span class="ps-project-type">Innenrenovation</span>
+            <div class="ps-project-name">Penthouse Zürichberg</div>
+            <div class="ps-project-loc">Zürich, 2024</div>
+          </div>
+        </div>
+
+        <div class="ps-project-card">
+          <img src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=700&q=80" alt="Villa Zug" loading="lazy"/>
+          <div class="ps-project-overlay">
+            <span class="ps-project-type">Vollrenovation &amp; Staging</span>
+            <div class="ps-project-name">Villa Rotkreuz</div>
+            <div class="ps-project-loc">Zug, 2024</div>
+          </div>
+        </div>
+
+        <div class="ps-project-card">
+          <img src="https://images.unsplash.com/photo-1480074568708-e7b720bb3f09?w=700&q=80" alt="Einfamilienhaus Bern" loading="lazy"/>
+          <div class="ps-project-overlay">
+            <span class="ps-project-type">Aussenbereich &amp; Fassade</span>
+            <div class="ps-project-name">Einfamilienhaus Bremgarten</div>
+            <div class="ps-project-loc">Bern, 2025</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════ TESTIMONIAL ═══════════ -->
+  <div class="ps-testimonial-bg" id="referenzen">
+    <div class="ps-testimonial-inner">
+      <div>
+        <span class="ps-section-label">Kundenstimmen</span>
+        <h2 class="ps-h2">Was unsere<br><em>Kunden</em> sagen</h2>
+        <div class="ps-rating-row">
+          <div class="ps-rating-num">4.9</div>
+          <div>
+            <div class="ps-stars">★★★★★</div>
+            <div class="ps-reviews">aus 86 Bewertungen</div>
+          </div>
+        </div>
+        <blockquote class="ps-quote">
+          „Absolut professionell und unkompliziert. Die Liegenschaft wurde in kürzester Zeit auf Hochglanz gebracht – unser Makler war begeistert, und der Verkaufspreis übertraf unsere Erwartungen."
+        </blockquote>
+        <div class="ps-reviewer">
+          <div class="ps-reviewer-avatar">S</div>
+          <div>
+            <div class="ps-reviewer-name">Sandra M.</div>
+            <div class="ps-reviewer-role">Verkäuferin, Zürich</div>
+          </div>
+        </div>
+      </div>
+      <div class="ps-testimonial-img">
+        <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=700&q=80" alt="Immobilien Schweiz" loading="lazy"/>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════ PARTNER ═══════════ -->
+  <div class="ps-partners">
+    <div class="ps-partners-inner">
+      <span class="ps-partner-label">Vertrauenspartner</span>
+      <div class="ps-partner-logos">
+        <span class="ps-partner-logo">Engel &amp; Völkers</span>
+        <span class="ps-partner-logo">JLL</span>
+        <span class="ps-partner-logo">Wüest Partner</span>
+        <span class="ps-partner-logo">Swiss Life</span>
+        <span class="ps-partner-logo">Privera</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════ KONTAKT / CTA ═══════════ -->
+  <div class="ps-cta-bg" id="kontakt">
+    <div class="ps-cta-accent"></div>
+    <div class="ps-cta-inner">
+      <div>
+        <span class="ps-section-label">Jetzt starten</span>
+        <h2 class="ps-h2">Bereit, Ihre<br>Immobilie zu <em>transformieren?</em></h2>
+        <p class="ps-body">
+          Kontaktieren Sie uns für ein kostenloses, unverbindliches Erstgespräch. Wir erstellen Ihnen innerhalb von 48 Stunden ein massgeschneidertes Angebot.
+        </p>
+        <br><br>
+        <p class="ps-body" style="font-size:14px;">
+          📍 Zürich, Zug, Bern, Basel und weitere Kantone<br>
+          📞 +41 XX XXX XX XX<br>
+          ✉ info@property-staging.ch
+        </p>
+      </div>
+      <div>
+        <div class="ps-contact-form">
+          <div class="ps-form-row">
+            <input class="ps-input" type="text" placeholder="Vorname" />
+            <input class="ps-input" type="text" placeholder="Nachname" />
+          </div>
+          <input class="ps-input" type="email" placeholder="E-Mail-Adresse" />
+          <input class="ps-input" type="tel" placeholder="Telefonnummer" />
+          <select class="ps-input" style="cursor:pointer;">
+            <option value="" disabled selected>Objekt-Typ wählen</option>
+            <option>Einfamilienhaus</option>
+            <option>Wohnung / Stockwerkeigentum</option>
+            <option>Mehrfamilienhaus</option>
+            <option>Gewerbeliegenschaft</option>
+          </select>
+          <textarea class="ps-input" rows="3" placeholder="Kurze Beschreibung der Liegenschaft und gewünschten Massnahmen"></textarea>
+          <button class="ps-btn" type="button" onclick="alert('Formular übermittelt – wir melden uns!')">Kostenlos anfragen</button>
+          <p style="font-size:11px;color:rgba(250,250,248,0.3);margin-top:8px;">Ihre Daten werden vertraulich behandelt und nicht weitergegeben.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════ FOOTER ═══════════ -->
+  <footer class="ps-footer">
+    <div class="ps-footer-inner">
+      <div class="ps-footer-brand">Property<span>Staging</span> Schweiz</div>
+      <nav class="ps-footer-links">
+        <a href="#leistungen">Leistungen</a>
+        <a href="#prozess">Ablauf</a>
+        <a href="#projekte">Projekte</a>
+        <a href="#referenzen">Referenzen</a>
+        <a href="#kontakt">Kontakt</a>
+      </nav>
+    </div>
+    <div class="ps-footer-copy">
+      <p>© 2025 Property Staging Schweiz GmbH · Zürich</p>
+      <p>Impressum · Datenschutz</p>
+    </div>
+  </footer>
+
+</div>
+<!-- END ps-wrap -->
+
+<script>
+(function() {
+  function initSliders() {
+    document.querySelectorAll('[data-slider]').forEach(function(wrap) {
+      var after  = wrap.querySelector('.ps-slider-after');
+      var handle = wrap.querySelector('.ps-slider-handle');
+      var dragging = false;
+
+      function setPos(x) {
+        var rect = wrap.getBoundingClientRect();
+        var pct  = Math.max(5, Math.min(95, ((x - rect.left) / rect.width) * 100));
+        after.style.width  = pct + '%';
+        handle.style.left  = pct + '%';
+      }
+
+      handle.addEventListener('mousedown', function(e) { dragging = true; e.preventDefault(); });
+      wrap.addEventListener('mousedown',   function(e) { dragging = true; setPos(e.clientX); });
+      window.addEventListener('mousemove', function(e) { if (dragging) setPos(e.clientX); });
+      window.addEventListener('mouseup',   function()  { dragging = false; });
+
+      handle.addEventListener('touchstart', function(e) { dragging = true; }, {passive:true});
+      wrap.addEventListener('touchstart',   function(e) { dragging = true; setPos(e.touches[0].clientX); }, {passive:true});
+      window.addEventListener('touchmove',  function(e) { if (dragging) setPos(e.touches[0].clientX); }, {passive:true});
+      window.addEventListener('touchend',   function()  { dragging = false; });
+    });
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initSliders);
+  } else {
+    initSliders();
+  }
+})();
+</script>
